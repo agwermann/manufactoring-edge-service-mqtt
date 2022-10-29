@@ -16,7 +16,7 @@ pip3 install -r requirements.txt
 ## Start Locally
 
 ```bash
-python3 main.py <broker_url> <broker_port> <response_topic>
+python3 main.py <broker_url> <broker_port> <topic> <response_topic>
 ```
 
 ## Build and Run Docker Container
