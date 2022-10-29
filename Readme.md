@@ -1,4 +1,4 @@
-# Edge Service
+# Edge Service MQTT
 
 ## Setup Virtual environment
 
@@ -22,7 +22,7 @@ python3 main.py <broker_url> <broker_port> <topic> <response_topic>
 ## Build and Run Docker Container
 
 ```bash
-docker build -t dev.local/edge-service:0.1 .
+docker build -t dev.local/edge-service-mqtt:0.1 .
 docker compose up -d
 ```
 

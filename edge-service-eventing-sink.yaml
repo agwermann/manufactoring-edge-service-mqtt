@@ -2,18 +2,18 @@ kubectl apply -f - << EOF
 apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
-  name: edge-service
+  name: edge-service-mqtt
 spec:
   template:
     metadata:
-      name: edge-service-v1
+      name: edge-service-mqtt-v1
       annotations:
         autoscaling.knative.dev/target: "1"
         autoscaling.knative.dev/maxScale: "1"
     spec:
       containers:
-      - name: edge-service
-        image: dev.local/edge-service:0.1
+      - name: edge-service-mqtt
+        image: dev.local/edge-service-mqtt:0.1
         imagePullPolicy: Never
         args: ["mosquitto", "1883", "mytopic", "mytopic-response"]
 EOF
