@@ -1,0 +1,1 @@
+docker build -t dev.local/edge-service-mqtt:0.1 .
