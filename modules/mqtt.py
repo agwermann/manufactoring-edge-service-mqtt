@@ -97,6 +97,6 @@ class MQTTClient:
             print(json.dumps(msg_dict))
             self.mqttclient.publish(self.topic_response, json.dumps(msg_dict))
 
-        self.mqttclient.subscribe(self.topic)
+        self.mqttclient.subscribe(self.topic, qos=QOS_EXACTLY_ONCE)
         self.mqttclient.on_message = on_message
         self.mqttclient.loop_forever()
