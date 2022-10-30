@@ -1,0 +1,39 @@
+kubectl apply -f - << EOF
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: edge-service-mqtt
+  labels:
+    app: edge-service-mqtt
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: edge-service-mqtt
+  template:
+    metadata:
+      name: edge-service-mqtt
+      labels:
+        app: edge-service-mqtt
+    spec:
+      containers:
+      - name: edge-service-mqtt
+        image: dev.local/edge-service-mqtt:0.1
+        imagePullPolicy: Never
+        args: ["mosquitto", "1883", "mytopic", "mytopic-response"]
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: edge-service-mqtt
+  labels:
+    app: edge-service-mqtt
+spec:
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 8090
+  selector:
+    app: edge-service-mqtt
+  type: ClusterIP
+EOF

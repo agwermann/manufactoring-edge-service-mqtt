@@ -10,6 +10,7 @@ spec:
       annotations:
         autoscaling.knative.dev/target: "1"
         autoscaling.knative.dev/maxScale: "1"
+        autoscaling.knative.dev/minScale: "1"
     spec:
       containers:
       - name: edge-service-mqtt
